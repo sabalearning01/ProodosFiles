@@ -1,6 +1,7 @@
 import React from "react";
-import Cloudstorageandmediafiles from '../assets/Cloudstorageandmediafiles.png';
-import Eye from '../assets/Eye.png';
+// import Cloudstorageandmediafiles from '../assets/Cloudstorageandmediafiles.png';
+import Cloudstorageandmediafiles from "../../assets/Cloudstorageandmediafiles.png";
+import Eye from "../../assets/Eye.png"
 
 
 const Login = () => {

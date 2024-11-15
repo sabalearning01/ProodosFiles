@@ -4,24 +4,51 @@ import Clouds from "../../assets/Clouds.png";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import *  as Yup from 'yup';
 
+
+
+const SignupSchema = Yup.object().shape({
+  userName: Yup.string()
+  .min(2, 'Username is too Short!')
+  .max(50, 'Your username is too Long!')
+  .required('Required'),
+
+  fullName:Yup.string()
+  .min(2, 'Your fullname is too Short!')
+  .max(50, 'Your fullname is too Long!')
+  .required('Required'),
+
+  email:Yup.email().email('Invalid Email')
+  .required('Required'),
+
+  password: Yup.string()
+    .required('Password is required')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+    .matches(/[0-9]/, 'Password must contain at least one number')
+    .matches(/[@$!%*?&]/, 'Password must contain at least one special character'),
+
+
+ })
+
+
 const Login = () => {
 
-   const SignupSchema = Yup.object().shape({
-    userName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+  <Formik
+  initialValues={{
+     userName:'', 
+     fullName: '', 
+     email: '' ,
+     password:'',
+    }}
 
-    fullName:Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
+    validationSchema={SignupSchema}
+    onSubmit={values => {
+      console.log(values);
+    }}
+   />
 
-
-   })
-
-
-
+   
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -120,6 +147,7 @@ const Login = () => {
                 </div>
               ) : (
                 <div className="signup">
+                  {({ errors, touched }) => (
                   <form>
                     <h3 className="font-[Poppins] text-[#242424] text-3xl font-bold mt-[30px]  ">
                       Sign Up
@@ -198,6 +226,7 @@ const Login = () => {
                       </span>
                     </h3>
                   </form>
+                  )}
                 </div>
               )}
             </div>

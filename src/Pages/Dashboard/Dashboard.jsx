@@ -104,9 +104,9 @@ const Dashboard = () => {
       ): null}
 
       <div className='lg:flex lg:justify-between lg:items-center '>
-      <div className='w-[60%] h-[176.77px] md:w-[50%] border border-[#DDDDDD] ml-[66.27px] md:ml-[350px] lg:ml-[310px] mr-[66.27px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div></div>
-      <div className='w-[60%] h-[176.77px]  md:w-[50%] border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={starred} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Starred</p></div></div>
-      <div className='w-[60%] h-[176.77px]  md:w-[50%] border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div></div>
+      <div className='w-[60%] h-[176.77px] md:w-[50%] lg:w-[70%] lg:h-[177px] border border-[#DDDDDD] ml-[66.27px] md:ml-[350px] lg:ml-[310px] mr-[66.27px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div></div>
+      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={starred} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Starred</p></div></div>
+      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div></div>
       </div>
 
       <div className='flex justify-between items-center mt-[28px] ml-[44px] lg:ml-[300px] mr-[44px]'>

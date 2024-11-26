@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import Cloudstorageandmediafiles from "../assets/Cloudstorageandmediafiles.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 // import Eye from "../assets/Eye.png";
 
 const Login = () => {
@@ -172,17 +173,20 @@ const Login = () => {
                     {formik.errors.password}
                   </div>
                 ) : null}
-                {/* <img
-                  className=" hidden absolute right-[650px] bottom-[-26px]"
-                  src={Eye}
-                  alt="Eye icon"
-                /> */}
+               
               </div>
 
               {isSignIn && (
-                <h3 className="font-[Poppins] text-[#242424] text-sm font-medium ml-[245px] mt-[14px] cursor-pointer">
-                  Forgot Password
-                </h3>
+
+                // <h3 className="font-[Poppins] text-[#242424] text-sm font-medium ml-[245px] mt-[14px] cursor-pointer">
+                //   Forgot Password
+                // </h3>
+                
+                <Link to ="/resetpassword">
+                  <h3 className="font-[Poppins] text-[#242424] text-sm font-medium ml-[245px] mt-[14px] cursor-pointer">
+                    Forgot Password
+                    </h3>
+                 </Link>
               )}
 
               <button
@@ -195,6 +199,7 @@ const Login = () => {
 
             <h3 className="font-[Poppins] text-sm text-[#475467] font-normal mt-[32px]">
               {isSignIn ? (
+                <Link to="/">
                 <>
                   Don’t have an account?{" "}
                   <span
@@ -204,9 +209,12 @@ const Login = () => {
                     Sign Up
                   </span>
                 </>
+                </Link>
               ) : (
+                <Link to="/Login">
                 <>
                   Already have an account?{" "}
+                  
                   <span
                     className="font-medium text-[#242424] cursor-pointer"
                     onClick={toggleMode}
@@ -214,6 +222,7 @@ const Login = () => {
                     Sign In
                   </span>
                 </>
+                </Link>
               )}
             </h3>
           </div>

@@ -119,9 +119,13 @@ const Login = () => {
 
   const [isLogin, setIsLogin] = useState(true);
 
+  // const toggleLogin = () => {
+  //   setIsLogin(!true);
+  // };
   const toggleLogin = () => {
-    setIsLogin(!true);
-  };
+  setIsLogin((prev) => !prev);
+};
+
 
   return (
     <div className="flex justify-between items-center">
@@ -129,7 +133,7 @@ const Login = () => {
         // style={{
         //   background: "linear-gradient(to top, #773DD3, #40B7D1)",
         // }}
-        className="hidden bg-gradient-to-t from-[#773DD3] to-[#40B7D1] min-h-screen w-full md:flex items-center justify-center text-white"
+        className="hidden bg-gradient-to-t from-[#773DD3] to-[#40B7D1] min-h-screen w-full md:flex items-center justify-center md:text-white"
       >
         <div className="block md:block lg:block bg-white w-[100%] h-[727px] md:mt-[148px] md:mb-[149px] md:ml-[207px] md:mr-[206px] md:rounded-2xl">
           <div className="hidden md:block lg:block">
@@ -164,7 +168,7 @@ const Login = () => {
                 <div className="">
                   <form onSubmit={handleSubmit}>
 
-                     <h3 className=" md:hidden font-[Poppins] font-normal text-base text-[#2A2A2A] lg:hidden">ProodosFiles</h3>
+                     <h3 className="sm:block md:hidden font-[Poppins] font-normal text-base text-[#2A2A2A] lg:hidden">ProodosFiles</h3>
                     <h3 className=" font-[Poppins] text-[#242424] text-3xl font-bold mt-[30px]  ">
                       Login
                     </h3>

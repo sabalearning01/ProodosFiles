@@ -165,13 +165,16 @@ const Logout = () => {
             <div className="rounded-full h-[50px] pt-3 pb-3 pl-4 pr-4 bg-[#F2F4F7]">
               JB
             </div>
+          
+
             <div className="w-[428px] border border-[#EAEAEA] pt-[10px]">
               <label htmlFor="fileUpload" className="cursor-pointer">
                 <img className="mx-auto" src={uploadcloud} alt="Upload" />
                 <h3 className="text-center text-sm font-[Poppins] text-[#242424] font-medium">
                   Click to upload
                   <span className="text-xs font-normal text-[#475467]">
-                    or drag and drop <br /> SVG, PNG, JPG, or GIF (max: 800x400px)
+                    or drag and drop <br /> SVG, PNG, JPG, or GIF (max:
+                    800x400px)
                   </span>
                 </h3>
               </label>
@@ -181,6 +184,12 @@ const Logout = () => {
                 className="hidden"
                 onChange={handleFileChange}
               />
+              {/* Show selected file name */}
+              {selectedFile && (
+                <p className="mt-2 text-sm text-center text-gray-600">
+                  Selected file: {selectedFile.name}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -229,5 +238,3 @@ const Logout = () => {
 };
 
 export default Logout;
-``
-

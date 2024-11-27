@@ -183,38 +183,52 @@ const Dashboard = () => {
         </div>
       ) : null}
 
-      <div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] ">
-        {/* <div className='w-[60%] h-[176.77px] md:w-[50%] lg:w-[70%] lg:h-[177px] border border-[#DDDDDD] ml-[66.27px] md:ml-[350px] lg:ml-[310px] mr-[66.27px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div></div>
-      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={starred} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Starred</p></div></div>
-      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div></div> */}
+<div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] ">
+  {/* All Folders */}
+  <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] ">
+    <div className="mt-[55.37px]">
+      <img className=" mx-auto" src={folder} alt="All Folders" />
+      <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
+        All Folders
+      </p>
+    </div>
+  </div>
 
-        <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] ">
-          <div className="mt-[55.37px]">
-            <img className=" mx-auto" src={folder} alt="" />{" "}
-            <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
-              All Folders
-            </p>
-          </div>
-        </div>
+  {/* Starred */}
+  <div className="border border-[#DDDDDD]  mt-[20px] w-[90%] ml-[20px]  lg:w-[262px] lg:h-[166px]">
+    <div className="mt-[55.37px]">
+      <img className=" mx-auto" src={starred} alt="Starred" />
+      <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
+        Starred
+      </p>
+    </div>
+  </div>
 
-        <div className="border border-[#DDDDDD]  mt-[20px] w-[90%] ml-[20px]  lg:w-[262px] lg:h-[166px]">
-          <div className="mt-[55.37px]">
-            <img className=" mx-auto" src={starred} alt="" />{" "}
-            <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
-              Starred
-            </p>
-          </div>
-        </div>
+  {/* File Upload */}
+  <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] lg:w-[262px] lg:h-[166px] flex flex-col items-center justify-center">
+    <img className="w-[40px] h-[40px] mb-[10px]" src={upload} alt="Upload" />
+    <p className="text-center text-[#242424] font-[Poppins] font-normal text-base mb-[10px]">
+      Upload File
+    </p>
+    <input
+      type="file"
+      className="file-input hidden"
+      id="file-upload"
+      onChange={(e) => {
+        if (e.target.files && e.target.files[0]) {
+          console.log("Uploaded file:", e.target.files[0]);
+        }
+      }}
+    />
+    <label
+      htmlFor="file-upload"
+      className="cursor-pointer bg-[#773DD3] text-white px-[16px] py-[8px] rounded-3xl text-sm font-[Poppins]"
+    >
+      Choose File
+    </label>
+  </div>
+</div>
 
-        <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] lg:w-[262px] lg:h-[166px]">
-          <div className="mt-[55.37px]">
-            <img className=" mx-auto" src={upload} alt="" />{" "}
-            <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
-              Uploads
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div className="flex justify-between items-center mt-[28px] ml-[44px] lg:ml-[300px] mr-[44px]">
         <h3 className="text-[#242424] font-[Poppins] text-base font-normal opacity-50">

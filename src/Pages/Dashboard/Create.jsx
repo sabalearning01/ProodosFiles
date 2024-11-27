@@ -1,4 +1,3 @@
-// import React from 'react'
 import React, { useState } from "react";
 import userprofile from "../../assets/userprofile.png";
 import bellicon from "../../assets/bellicon.png";

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import menuvector from "../../assets/menuvector.png";
 import folder from "../../assets/folder.png";
@@ -24,9 +24,9 @@ const Dashboard = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const [searchQuery, setSearchQuery] = useState(""); 
-  const [searchResults, setSearchResults] = useState([]); 
-  const [isLoading, setIsLoading] = useState(false); 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -61,7 +61,7 @@ const Dashboard = () => {
             type="text"
             placeholder="Search"
             value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)} 
+            onChange={(e) => setSearchQuery(e.target.value)}
           ></input>
         </div>
         <div className="flex justify-center items-center gap-2 mt-[26px] mr-[59px]">
@@ -183,52 +183,55 @@ const Dashboard = () => {
         </div>
       ) : null}
 
-<div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] ">
-  {/* All Folders */}
-  <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] ">
-    <div className="mt-[55.37px]">
-      <img className=" mx-auto" src={folder} alt="All Folders" />
-      <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
-        All Folders
-      </p>
-    </div>
-  </div>
+      <div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] ">
+        {/* All Folders */}
+        <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] ">
+          <div className="mt-[55.37px]">
+            <img className=" mx-auto" src={folder} alt="All Folders" />
+            <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
+              All Folders
+            </p>
+          </div>
+        </div>
 
-  {/* Starred */}
-  <div className="border border-[#DDDDDD]  mt-[20px] w-[90%] ml-[20px]  lg:w-[262px] lg:h-[166px]">
-    <div className="mt-[55.37px]">
-      <img className=" mx-auto" src={starred} alt="Starred" />
-      <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
-        Starred
-      </p>
-    </div>
-  </div>
+        {/* Starred */}
+        <div className="border border-[#DDDDDD]  mt-[20px] w-[90%] ml-[20px]  lg:w-[262px] lg:h-[166px]">
+          <div className="mt-[55.37px]">
+            <img className=" mx-auto" src={starred} alt="Starred" />
+            <p className="mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base">
+              Starred
+            </p>
+          </div>
+        </div>
 
-  {/* File Upload */}
-  <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] lg:w-[262px] lg:h-[166px] flex flex-col items-center justify-center">
-    <img className="w-[40px] h-[40px] mb-[10px]" src={upload} alt="Upload" />
-    <p className="text-center text-[#242424] font-[Poppins] font-normal text-base mb-[10px]">
-      Upload File
-    </p>
-    <input
-      type="file"
-      className="file-input hidden"
-      id="file-upload"
-      onChange={(e) => {
-        if (e.target.files && e.target.files[0]) {
-          console.log("Uploaded file:", e.target.files[0]);
-        }
-      }}
-    />
-    <label
-      htmlFor="file-upload"
-      className="cursor-pointer bg-[#773DD3] text-white px-[16px] py-[8px] rounded-3xl text-sm font-[Poppins]"
-    >
-      Choose File
-    </label>
-  </div>
-</div>
-
+        {/* File Upload */}
+        <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] lg:w-[262px] lg:h-[166px] flex flex-col items-center justify-center">
+          <img
+            className="w-[40px] h-[40px] mb-[10px]"
+            src={upload}
+            alt="Upload"
+          />
+          <p className="text-center text-[#242424] font-[Poppins] font-normal text-base mb-[10px]">
+            Upload File
+          </p>
+          <input
+            type="file"
+            className="file-input hidden"
+            id="file-upload"
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                console.log("Uploaded file:", e.target.files[0]);
+              }
+            }}
+          />
+          <label
+            htmlFor="file-upload"
+            className="cursor-pointer bg-[#773DD3] text-white px-[16px] py-[8px] rounded-3xl text-sm font-[Poppins]"
+          >
+            Choose File
+          </label>
+        </div>
+      </div>
 
       <div className="flex justify-between items-center mt-[28px] ml-[44px] lg:ml-[300px] mr-[44px]">
         <h3 className="text-[#242424] font-[Poppins] text-base font-normal opacity-50">

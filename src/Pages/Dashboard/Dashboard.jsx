@@ -183,7 +183,7 @@ const Dashboard = () => {
         </div>
       ) : null}
 
-      <div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] ">
+      <div className="lg:flex lg:justify-evenly lg:items-center lg:ml-[210px] lg:mt-[24px] ">
         {/* All Folders */}
         <div className="border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] ">
           <div className="mt-[55.37px]">

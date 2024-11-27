@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import {toast} from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import Clouds from "../../assets/Clouds.png";
 import axios from 'axios';
 import *  as Yup from 'yup';
+import { SignupAction } from "../../Base/auth";
+import { LoginAction } from "../../Base/auth";
 
 // import Eye from "../../assets/Eye.png"
 
@@ -67,51 +69,96 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
   
-    try {
-      setLoading(true); // Start loading
-      // Validate entire form data using Yup schema
-      await validationSchema.validate(formData, { abortEarly: false });
-      setErrors({}); // Clear any previous errors if validation is successful
+  //   try {
+  //     setLoading(true); // Start loading
+  //     // Validate entire form data using Yup schema
+  //     await validationSchema.validate(formData, { abortEarly: false });
+  //     setErrors({}); // Clear any previous errors if validation is successful
   
-      // Determine endpoint based on login/signup
-      const endpoint = isLogin
-      ? 'https://proodoosfiles.onrender.com/api/login/'
-      : 'https://proodoosfiles.onrender.com/api/sign-up/';
+  //     // Determine endpoint based on login/signup
+  //     const endpoint = isLogin
+  //     ? LoginAction(values)
+  //     : SignupAction(values)
 
   
-      // Make API request
-      const response = await axios.post(endpoint, formData);
+  //     // Make API request
+  //     const response = await axios.post(endpoint, formData);
   
-      // Handle successful response
-      if (response.status >= 200 && response.status < 300) {
-        toast.success(isLogin ? 'Login successful' : 'Signup successful');
-      } else {
-        toast.error('Unexpected response. Please try again.');
-      }
-    } catch (err) {
-      if (err.name === 'ValidationError') {
-        // Handle validation errors
-        const validationErrors = {};
-        err.inner.forEach((error) => {
-          validationErrors[error.path || 'unknown'] = error.message;
-        });
-        setErrors(validationErrors);
-      } else if (err.response) {
-        // Handle API errors
-        console.error('API Error:', err.response.data);
-        toast.error(err.response.data.message || 'Something went wrong!');
-      } else {
-        // Handle unexpected errors
-        console.error('Unexpected Error:', err);
-        toast.error('An unexpected error occurred. Please try again.');
-      }
-    } finally {
-      setLoading(false); // Stop loading
+  //     // Handle successful response
+  //     if (response.status >= 200 && response.status < 300) {
+  //       toast.success(isLogin ? 'Login successful' : 'Signup successful');
+  //     } else {
+  //       toast.error('Unexpected response. Please try again.');
+  //     }
+  //   } catch (err) {
+  //     if (err.name === 'ValidationError') {
+  //       // Handle validation errors
+  //       const validationErrors = {};
+  //       err.inner.forEach((error) => {
+  //         validationErrors[error.path || 'unknown'] = error.message;
+  //       });
+  //       setErrors(validationErrors);
+  //     } else if (err.response) {
+  //       // Handle API errors
+  //       console.error('API Error:', err.response.data);
+  //       toast.error(err.response.data.message || 'Something went wrong!');
+  //     } else {
+  //       // Handle unexpected errors
+  //       console.error('Unexpected Error:', err);
+  //       toast.error('An unexpected error occurred. Please try again.');
+  //     }
+  //   } finally {
+  //     setLoading(false); // Stop loading
+  //   }
+  // }
+
+ 
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    setLoading(true); // Start loading
+    // Validate entire form data using Yup schema
+    await validationSchema.validate(formData, { abortEarly: false });
+    setErrors({}); // Clear any previous errors if validation is successful
+
+    // Make API request using the appropriate action
+    const response = isLogin
+      ? await LoginAction(formData)
+      : await SignupAction(formData);
+
+    // Handle successful response
+    if (response.status >= 200 && response.status < 300) {
+      toast.success(isLogin ? "Login successful" : "Signup successful");
+    } else {
+      toast.error("Unexpected response. Please try again.");
     }
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      // Handle validation errors
+      const validationErrors = {};
+      err.inner.forEach((error) => {
+        validationErrors[error.path || "unknown"] = error.message;
+      });
+      setErrors(validationErrors);
+    } else if (err.response) {
+      // Handle API errors
+      console.error("API Error:", err.response.data);
+      toast.error(err.response.data.message || "Something went wrong!");
+    } else {
+      // Handle unexpected errors
+      console.error("Unexpected Error:", err);
+      toast.error("An unexpected error occurred. Please try again.");
+    }
+  } finally {
+    setLoading(false); // Stop loading
   }
+};
+
 
 
 
@@ -129,6 +176,8 @@ const Login = () => {
 
   return (
     <div className="flex justify-between items-center">
+
+      <ToastContainer/>
       <div 
         // style={{
         //   background: "linear-gradient(to top, #773DD3, #40B7D1)",

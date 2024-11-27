@@ -11,6 +11,8 @@ import Disposal from "../../assets/Disposal.png";
 import AddFolder from "../../assets/AddFolder.png";
 import LogoutRounded from "../../assets/LogoutRounded.png";
 import close from "../../assets/close.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Create = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,24 +24,42 @@ const Create = () => {
   const [folderName, setFolderName] = useState("");
   const [message, setMessage] = useState("");
 
+  // const handleCreateFolder = async () => {
+  //   if (!folderName.trim()) {
+  //     setMessage("Folder name cannot be empty.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await axios.post(
+  //       "https://proodoosfiles.onrender.com/api/create-f/",
+  //       {
+  //         folderName,
+  //       }
+  //     );
+  //     setMessage(response.data);
+  //   } catch (error) {
+  //     setMessage(error.response?.data || "Error creating folder.");
+  //   }
+  // };
+
   const handleCreateFolder = async () => {
     if (!folderName.trim()) {
-      setMessage("Folder name cannot be empty.");
+      toast.error("Folder name cannot be empty.");
       return;
     }
-
+  
     try {
       const response = await axios.post(
         "https://proodoosfiles.onrender.com/api/create-f/",
-        {
-          folderName,
-        }
+        { folderName }
       );
-      setMessage(response.data);
+      toast.success("Folder created successfully!");
     } catch (error) {
-      setMessage(error.response?.data || "Error creating folder.");
+      toast.error(error.response?.data || "Error creating folder.");
     }
   };
+  
 
   return (
     <div>
@@ -58,7 +78,7 @@ const Create = () => {
       <div className="hidden lg:flex justify-between items-center ">
         <div>
           <input
-            className="text-xs w-261px h-[40px] border border-[#EAEAEA] mb-[50px] ml-[310px] p-4 rounded-3xl font-[Poppins]"
+            className="text-xs w-[261px] h-[40px] border border-[#EAEAEA] mb-[50px] ml-[310px] p-4 rounded-3xl font-[Poppins]"
             type="text"
             placeholder="Search"
             
@@ -75,7 +95,7 @@ const Create = () => {
 
       <div className="">
         <input
-          className="ml-5 mr-2- mt-2 relative mx-auto  rounded w-[90%] md:w-[55%] md:ml-[300px] lg:w-[70%]  h-[72px] lg:[100%] lg:ml-[315px] lg:mt-1 border border-[#EAEAEA] "
+          className="ml-5 mr-2- mt-2 relative mx-auto  rounded w-[90%] md:w-[55%] md:ml-[300px] lg:w-[75%]  h-[72px] lg:[100%] lg:ml-[315px] lg:mt-1 border border-[#EAEAEA] "
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}

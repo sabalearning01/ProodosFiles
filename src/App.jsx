@@ -60,6 +60,7 @@ import Starred from './Pages/Dashboard/Starred';
 import RecycleBin from './Pages/Dashboard/RecycleBin';
 import Folders from './Pages/Dashboard/Folders';
 import Sidebar from './Components/Sidebar';
+import Logout from './Pages/Dashboard/Logout';
 
 function App() {
   const location = useLocation();
@@ -97,6 +98,7 @@ function App() {
         <Route path="/folders" element={<Folders />} />
         <Route path="/starred" element={<Starred />} />
         <Route path="/recyclebin" element={<RecycleBin />} />
+        <Route path="/logout" element={<Logout/>} />
       </Routes>
     </div>
   );

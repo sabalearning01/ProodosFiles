@@ -103,10 +103,25 @@ const Dashboard = () => {
           </div>
       ): null}
 
-      <div className='lg:flex lg:justify-between lg:items-center '>
-      <div className='w-[60%] h-[176.77px] md:w-[50%] lg:w-[70%] lg:h-[177px] border border-[#DDDDDD] ml-[66.27px] md:ml-[350px] lg:ml-[310px] mr-[66.27px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div></div>
+      <div className='lg:flex lg:justify-evenly lg:items-center lg:ml-[250px] lg:mt-[24px] '>
+      {/* <div className='w-[60%] h-[176.77px] md:w-[50%] lg:w-[70%] lg:h-[177px] border border-[#DDDDDD] ml-[66.27px] md:ml-[350px] lg:ml-[310px] mr-[66.27px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div></div>
       <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={starred} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Starred</p></div></div>
-      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div></div>
+      <div className='w-[60%] h-[176.77px]  md:w-[50%] lg:w-[70%]  border border-[#DDDDDD] ml-[68.6px] mr-[66.27px]  md:ml-[350px] rounded mt-[25.59px]'><div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div></div> */}
+      
+      <div className='border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] md:ml-[50px]  lg:w-[262px] lg:h-[166px] '>
+      <div className='mt-[55.37px]'><img  className=" mx-auto" src={folder} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>All Folders</p></div>
+      </div>
+      
+      
+      <div className='border border-[#DDDDDD]  mt-[20px] w-[90%] ml-[20px]  lg:w-[262px] lg:h-[166px]'>
+      <div className='mt-[55.37px]'><img  className=" mx-auto" src={starred} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Starred</p></div>
+      </div>
+      
+
+      <div className='border border-[#DDDDDD] mt-[20px] w-[90%] ml-[20px] md:w-[50%] lg:w-[262px] lg:h-[166px]'>
+      <div className='mt-[55.37px]'><img  className=" mx-auto" src={upload} alt="" /> <p className='mt-[11.47px] text-center text-[#242424] font-[Poppins] font-normal text-base'>Uploads</p></div>
+      </div>
+     
       </div>
 
       <div className='flex justify-between items-center mt-[28px] ml-[44px] lg:ml-[300px] mr-[44px]'>
@@ -149,6 +164,7 @@ const Dashboard = () => {
       </div> */}
 
 <div className='w-[80%] h-[286px] lg:w-[72%] lg:h-[522px] border-[#EAEAEA] border ml-[44px] lg:ml-[300px]'>
+
   {/* Headers */}
   <div className='grid grid-cols-4 gap-[16px] px-[18px] mt-[24px]'>
     <h3 className='font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left'>Name</h3>

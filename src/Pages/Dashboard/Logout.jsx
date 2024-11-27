@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import Sidebar from "../../Components/Sidebar";
 import menuvector from "../../assets/menuvector.png";
-import bellicon from "../../assets/bellicon.png";
-import userprofile from "../../assets/userprofile.png";
 import close from "../../assets/close.png";
 import uploadcloud from "../../assets/uploadcloud.png";
-import { Link } from "react-router-dom";
-import Home from "../../assets/Home.png";
-import FTP from "../../assets/FTP.png";
-import Rating from "../../assets/Rating.png";
-import Disposal from "../../assets/Disposal.png";
-import AddFolder from "../../assets/AddFolder.png";
 import LogoutRounded from "../../assets/LogoutRounded.png";
-import axios from "axios"; // Install axios if not already done: npm install axios
+import Home from "../../assets/Home.png";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Logout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null); // State to store selected file
   const [uploadStatus, setUploadStatus] = useState(""); // State to store upload status
+  const [showConfirm, setShowConfirm] = useState(false); // State for confirmation modal
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -54,9 +51,17 @@ const Logout = () => {
     }
   };
 
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Remove token (or adjust based on auth implementation)
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
     <div>
       <Sidebar />
+
+      {/* Header for small screens */}
       <div className="flex justify-between items-center mt-[29px] lg:hidden">
         <p className="font-[Poppins] text-[#773DD3] text-base font-extrabold ml-[22px]">
           Prodoos<span className="font-light">Files</span>
@@ -69,6 +74,16 @@ const Logout = () => {
         />
       </div>
 
+      {/* Logout button for large screens */}
+      <div className="hidden lg:flex justify-end items-center px-6 py-4">
+        <button
+          onClick={() => setShowConfirm(true)} // Open confirmation modal
+          className="bg-[#773DD3] text-white font-[Poppins] text-sm py-2 px-4  mr-[27px] mt-[20px] rounded-lg hover:bg-[#5a2aa3] transition duration-300"
+        >
+          Logout
+        </button>
+      </div>
+
       {isMenuOpen && (
         <div>
           <div
@@ -76,7 +91,7 @@ const Logout = () => {
             onClick={toggleMenu}
           ></div>
           <div className="bg-[#fff] w-[272px] h-[100%] fixed left-0 top-0 z-50 lg:hidden">
-            <div className="flex justify-between items-center ">
+            <div className="flex justify-between items-center">
               <p className="mt-[22px] font-[Poppins] text-[#773DD3] text-base font-extrabold ml-[22px]">
                 Prodoos<span className="font-light">Files</span>
               </p>
@@ -88,7 +103,7 @@ const Logout = () => {
               />
             </div>
 
-            <div className="flex ml-[16px] mt-[27px] hover:bg-[#E3E0E833] transition-colors duration-200 ">
+            <div className="flex ml-[16px] mt-[27px] hover:bg-[#E3E0E833] transition-colors duration-200">
               <img
                 className="object-contain cursor-pointer"
                 src={Home}
@@ -99,7 +114,20 @@ const Logout = () => {
               </h3>
             </div>
 
-            {/* Other links */}
+            {/* Logout link */}
+            <div
+              className="flex ml-[16px] mt-[27px] hover:bg-[#E3E0E833] transition-colors duration-200 cursor-pointer"
+              onClick={() => setShowConfirm(true)} // Open confirmation modal
+            >
+              <img
+                className="object-contain"
+                src={LogoutRounded}
+                alt="Logout"
+              />
+              <h3 className="text-[#242424] font-[Poppins] text-base font-normal">
+                Logout
+              </h3>
+            </div>
           </div>
         </div>
       )}
@@ -107,7 +135,7 @@ const Logout = () => {
       <div className="w-[90%] ml-[20px] mt-[20px] h-[692px] lg:w-[70%] lg:h-[506px] border border-[#EAEAEA] rounded-xl lg:ml-[350px] lg:mt-[40px]">
         <div className="lg:flex justify-between items-center mt-[24px] ml-[24px] mr-[24px]">
           <div>
-            <h3 className="font-[Poppins] font-normal text-base text-[#242424] ">
+            <h3 className="font-[Poppins] font-normal text-base text-[#242424]">
               Personal Info
             </h3>
             <h4 className="font-[Poppins] text-sm text-[#475467]">
@@ -126,7 +154,7 @@ const Logout = () => {
 
         <div className="lg:flex justify-between items-center mt-[24px] ml-[24px] mr-[24px]">
           <div>
-            <h3 className="font-[Poppins] font-normal text-base text-[#242424] ">
+            <h3 className="font-[Poppins] font-normal text-base text-[#242424]">
               Your photo
             </h3>
             <h4 className="font-[Poppins] text-sm text-[#475467]">
@@ -161,16 +189,45 @@ const Logout = () => {
         {uploadStatus && (
           <p
             className={`mt-4 text-center ${
-              uploadStatus.includes("successful") ? "text-green-500" : "text-red-500"
+              uploadStatus.includes("successful")
+                ? "text-green-500"
+                : "text-red-500"
             }`}
           >
             {uploadStatus}
           </p>
         )}
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6">
+            <h3 className="text-lg font-semibold mb-4">Confirm Logout</h3>
+            <p className="mb-6 text-gray-600">
+              Are you sure you want to log out?
+            </p>
+            <div className="flex justify-end gap-4">
+              <button
+                className="px-4 py-2 bg-gray-300 rounded-lg"
+                onClick={() => setShowConfirm(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Logout;
+``
 

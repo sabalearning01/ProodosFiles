@@ -233,14 +233,14 @@ const Starred = () => {
         <div className="flex justify-between gap-3 items-center px-[18px] mt-[24px]">
           <button
             onClick={() => setShowOnlyStarred(!showOnlyStarred)}
-            className="px-4 py-2 bg-purple-500 text-white rounded"
+            className="px-4 py-2 bg-purple-500 text-white rounded font-[Poppins]"
           >
             {showOnlyStarred ? "Show All" : "Show Starred Only"}
           </button>
           <select
             onChange={(e) => handleSort(e.target.value)}
             value={sortCriteria}
-            className="px-4 py-2 bg-gray-200 rounded"
+            className="px-4 py-2 bg-gray-200 rounded font-[Poppins]"
           >
             <option value="name">Sort by Name</option>
             <option value="size">Sort by Size</option>
@@ -264,7 +264,7 @@ const Starred = () => {
                   src={folder} // Replace with a valid `folder` icon source
                   alt="Folder Icon"
                 />
-                <h3 className="font-[Poppins] text-[#7E838B] font-normal text-[10px]">
+                <h3 className="font-[Poppins] text-[#7E838B] font-normal text-[10px] ">
                   {folder.name}
                 </h3>
               </div>
@@ -290,7 +290,7 @@ const Starred = () => {
               <button
                 onClick={() => toggleStarred(folder.id)}
                 className={`font-[Poppins] text-[10px] px-2 py-1 rounded ${
-                  folder.isStarred ? "bg-yellow-400 text-white" : "bg-gray-200 text-black"
+                  folder.isStarred ? "bg-blue-400 text-white" : "bg-gray-200 text-black"
                 }`}
               >
                 {folder.isStarred ? "Unstar" : "Star"}

@@ -11,8 +11,8 @@ import Disposal from "../../assets/Disposal.png";
 import AddFolder from "../../assets/AddFolder.png";
 import LogoutRounded from "../../assets/LogoutRounded.png";
 import close from "../../assets/close.png";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Create = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ const Create = () => {
       toast.error("Folder name cannot be empty.");
       return;
     }
-  
+
     try {
       const response = await axios.post(
         "https://proodoosfiles.onrender.com/api/create-f/",
@@ -59,7 +59,6 @@ const Create = () => {
       toast.error(error.response?.data || "Error creating folder.");
     }
   };
-  
 
   return (
     <div>
@@ -81,7 +80,6 @@ const Create = () => {
             className="text-xs w-[261px] h-[40px] border border-[#EAEAEA] mb-[50px] ml-[310px] p-4 rounded-3xl font-[Poppins]"
             type="text"
             placeholder="Search"
-            
           ></input>
         </div>
         <div className="mb-[30px] flex justify-center items-center gap-2 mt-[36px] mr-[59px]">
@@ -100,7 +98,10 @@ const Create = () => {
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
         />
-        <button onClick={handleCreateFolder} className=" absolute right-8 md:right-14 top-30 mt-6 lg:top-44 lg:right-24 lg:mt-4 mb-[19px] ml-[15px] cursor-pointer rounded Font-[Poppins] bg-[#773DD3] pb-[10px] pt-[10px] pl-[16px] pr-[16px] text-[#fff] text-[10px] font-normal">
+        <button
+          onClick={handleCreateFolder}
+          className=" absolute right-8 md:right-14 top-30 mt-6 lg:top-44 lg:right-24 lg:mt-4 mb-[19px] ml-[15px] cursor-pointer rounded Font-[Poppins] bg-[#773DD3] pb-[10px] pt-[10px] pl-[16px] pr-[16px] text-[#fff] text-[10px] font-normal"
+        >
           New Folder
         </button>
         {message && <p>{message}</p>}

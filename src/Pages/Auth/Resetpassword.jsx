@@ -3,8 +3,8 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
-import mark from '../../assets/mark.png'
+import "react-toastify/dist/ReactToastify.css";
+import mark from "../../assets/mark.png";
 
 const ResetPassword = () => {
   // Define Yup validation schema
@@ -16,9 +16,12 @@ const ResetPassword = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post("https://proodoosfiles.onrender.com/api/verify/", {
-        email: values.email,
-      });
+      const response = await axios.post(
+        "https://proodoosfiles.onrender.com/api/verify/",
+        {
+          email: values.email,
+        }
+      );
 
       if (response.status === 200) {
         toast.success("Reset link sent successfully!");

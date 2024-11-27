@@ -66,7 +66,9 @@ const Verify = () => {
                 } h-[44px] pl-4 text-[#24242480] mb-6`}
               />
               {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm mb-4">{formik.errors.email}</p>
+                <p className="text-red-500 text-sm mb-4">
+                  {formik.errors.email}
+                </p>
               )}
               <button
                 type="submit"
@@ -90,6 +92,3 @@ const Verify = () => {
 };
 
 export default Verify;
-
-
-

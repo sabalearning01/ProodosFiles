@@ -1,7 +1,7 @@
 import Apikit from "./Apikit";
 
 export const SignupAction = (data) => {
-    return Apikit.post ("signup", data);
+    return Apikit.post ("/signup", data);
 };
 
 export const LoginAction = (data) =>{

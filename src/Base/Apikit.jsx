@@ -4,8 +4,7 @@ let Apikit = axios.create({
   baseURL: "https://proodoosfiles.onrender.com/api",
 
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json"
   },
 });
 

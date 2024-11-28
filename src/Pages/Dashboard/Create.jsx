@@ -13,6 +13,7 @@ import close from "../../assets/close.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Create = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -49,10 +50,7 @@ const Create = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://proodoosfiles.onrender.com/api/create-f/",
-        { folderName }
-      );
+      const response =  Create({ folderName });
       toast.success("Folder created successfully!");
     } catch (error) {
       toast.error(error.response?.data || "Error creating folder.");

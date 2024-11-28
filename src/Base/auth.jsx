@@ -1,5 +1,6 @@
 import Apikit from "./Apikit";
 
+
 export const SignupAction = (data) => {
     return Apikit.post ("/sign-up", data);
 };
@@ -15,16 +16,16 @@ export const LoginOutAction = (data) =>{
 
 
 
-export const ResetAction = (data, token)=>{
-    return Apikit.post("/reset-password", data,{
+export const VerifyAction = (data, token)=>{
+    return Apikit.post("/verify", data,{
      headers:{
         authorization: `Bearer ${token}`,
      },
     });
 };
 
-export const PasswordAction =(data,token)=> {
-    return Apikit.put("change-password", data,{
+export const ResetPassword =(data,token)=> {
+    return Apikit.put("rest/pswd", data,{
         headers:{
             authorization:`Bearer ${token}`,
         },

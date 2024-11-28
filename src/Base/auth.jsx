@@ -1,11 +1,11 @@
 import Apikit from "./Apikit";
 
 export const SignupAction = (data) => {
-    return Apikit.post ("/api/sign-up", data);
+    return Apikit.post ("/sign-up", data);
 };
 
 export const LoginAction = (data) =>{
-    return Apikit.post("/api/login", data);
+    return Apikit.post("/login", data);
 };
 
 export const LoginOutAction = (data) =>{

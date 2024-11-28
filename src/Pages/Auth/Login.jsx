@@ -137,6 +137,9 @@ const Login = () => {
         ? await LoginAction(formData)
         : await SignupAction(formData);
 
+        console.log(SignupAction);
+        console.log(LoginAction);
+
       
       if (response.status >= 200 && response.status < 300) {
         toast.success(isLogin ? "Login successful" : "Signup successful");

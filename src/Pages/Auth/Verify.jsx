@@ -5,6 +5,23 @@ import "react-toastify/dist/ReactToastify.css";
 import personal from "../../assets/personal.png";
 
 const Verify = () => {
+  // Retrieve the token from localStorage
+  const token = localStorage.getItem("auth-token"); // Replace "auth-token" with your actual key
+
+  // Check if token exists
+  if (!token) {
+    toast.error("Authentication token not found. Please log in again.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  }
+
   // Define Yup validation schema
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -18,19 +35,39 @@ const Verify = () => {
       email: "",
     },
     validationSchema,
-    onSubmit: (values) => {
-      // Simulate form submission logic
-      console.log("Reset link sent to:", values.email);
-      toast.success("Reset link has been sent to your email address!", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+    onSubmit: async (values) => {
+      if (!token) {
+        toast.error("Unable to verify without a valid token.", {
+          position: "top-center",
+          autoClose: 3000,
+        });
+        return;
+      }
+
+      try {
+        const response = await VerifyAction(values, token); 
+        toast.success(response.data.message || "Verification email sent successfully!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      } catch (error) {
+        toast.error(error.response?.data?.message || "Failed to verify account.", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
     },
   });
 

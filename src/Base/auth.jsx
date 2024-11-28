@@ -12,6 +12,11 @@ export const LoginOutAction = (data) =>{
     return Apikit.post("/logout", data);
 };
 
+export const FolderAction = (data) =>{
+    return Apikit.post("/folder", data);
+};
+
+
 
 export const ResetAction = (data, token)=>{
     return Apikit.post("/reset-password", data,{

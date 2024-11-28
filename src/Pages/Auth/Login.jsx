@@ -127,17 +127,17 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      setLoading(true); // Start loading
-      // Validate entire form data using Yup schema
+      setLoading(true); 
+      
       await validationSchema.validate(formData, { abortEarly: false });
-      setErrors({}); // Clear any previous errors if validation is successful
+      setErrors({}); 
 
-      // Make API request using the appropriate action
+      
       const response = isLogin
         ? await LoginAction(formData)
         : await SignupAction(formData);
 
-      // Handle successful response
+      
       if (response.status >= 200 && response.status < 300) {
         toast.success(isLogin ? "Login successful" : "Signup successful");
       } else {
@@ -145,23 +145,23 @@ const Login = () => {
       }
     } catch (err) {
       if (err.name === "ValidationError") {
-        // Handle validation errors
+        
         const validationErrors = {};
         err.inner.forEach((error) => {
           validationErrors[error.path || "unknown"] = error.message;
         });
         setErrors(validationErrors);
       } else if (err.response) {
-        // Handle API errors
+        
         console.error("API Error:", err.response.data);
         toast.error(err.response.data.message || "Something went wrong!");
       } else {
-        // Handle unexpected errors
+  
         console.error("Unexpected Error:", err);
         toast.error("An unexpected error occurred. Please try again.");
       }
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -169,9 +169,6 @@ const Login = () => {
 
   const [isLogin, setIsLogin] = useState(true);
 
-  // const toggleLogin = () => {
-  //   setIsLogin(!true);
-  // };
   const toggleLogin = () => {
     setIsLogin((prev) => !prev);
   };

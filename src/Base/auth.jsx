@@ -5,7 +5,7 @@ export const SignupAction = (data) => {
 };
 
 export const LoginAction = (data) =>{
-    return Apikit.post("/login", data);
+    return Apikit.post("/api/login", data);
 };
 
 export const LoginOutAction = (data) =>{

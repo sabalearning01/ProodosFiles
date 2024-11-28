@@ -12,9 +12,6 @@ export const LoginOutAction = (data) =>{
     return Apikit.post("/logout", data);
 };
 
-export const FolderAction = (data) =>{
-    return Apikit.post("/folder", data);
-};
 
 
 

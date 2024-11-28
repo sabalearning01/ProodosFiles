@@ -10,15 +10,15 @@ import { LoginAction } from "../../Base/auth";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    userName: "",
-    fullName: "",
+    username: "",
+    full_name: "",
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState({
-    userName: false,
-    fullName: false,
+    username: false,
+    full_name: false,
     email: false,
     password: false,
   });
@@ -32,12 +32,12 @@ const Login = () => {
   };
 
   const validationSchema = Yup.object({
-    userName: Yup.string()
+    username: Yup.string()
       .min(2, "Username is too Short!")
       .max(50, "Your username is too Long!")
       .required("Username is Required"),
 
-    fullName: Yup.string()
+    full_name: Yup.string()
       .min(2, "Your fullname is too Short!")
       .max(50, "Your fullname is too Long!")
       .required("Fullname is Required"),
@@ -136,10 +136,6 @@ const Login = () => {
       const response = isLogin
         ? await LoginAction(formData)
         : await SignupAction(formData);
-
-        console.log(SignupAction);
-        console.log(LoginAction);
-
       
       if (response.status >= 200 && response.status < 300) {
         toast.success(isLogin ? "Login successful" : "Signup successful");
@@ -168,7 +164,9 @@ const Login = () => {
     }
   };
 
-  console.log(formData);
+  // console.log(formData);
+  // console.log(SignupAction);
+  // console.log(LoginAction);
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -312,49 +310,49 @@ const Login = () => {
                       <input
                         className={`mt-[9px] font-[Poppins] font-medium text-sm text-[#242424] w-[360px] h-[44px] pl-[15px] rounded border border-[#D0D5DD] opacity-50 bg-white
                         ${
-                          errors.userName
+                          errors.username
                             ? "border-red-500"
-                            : isValid.userName
+                            : isValid.username
                             ? "border-green-500"
                             : ""
                         }`}
-                        name="userName"
+                        name="username"
                         type="text"
-                        placeholder="Enter your userName"
-                        value={formData.userName}
+                        placeholder="Enter your username"
+                        value={formData.username}
                         onChange={handleChange}
                       />
-                      {errors.userName && (
+                      {errors.username && (
                         <div className="text-red-500 text-sm">
-                          {errors.userName}
+                          {errors.username}
                         </div>
                       )}
                     </div>
 
                     <div className="mt-[10px]">
                       <label className="text-[#242424]  font-[Poppins] text-base font-medium ">
-                        FullName:
+                        Fullname:
                       </label>
                       <br />
 
                       <input
                         className={`mt-[9px] font-[Poppins] font-medium text-sm text-[#242424] w-[360px] h-[44px] pl-[15px] rounded border border-[#D0D5DD] bg-white
                         ${
-                          errors.fullName
+                          errors.full_name
                             ? "border-red-500"
-                            : isValid.fullName
+                            : isValid.full_name
                             ? "border-green-500"
                             : ""
                         }`}
-                        name="fullName"
+                        name="full_name"
                         type="text"
-                        placeholder="Enter your fullName"
-                        value={formData.fullName}
+                        placeholder="Enter your fullname"
+                        value={formData.full_name}
                         onChange={handleChange}
                       />
-                      {errors.fullName && (
+                      {errors.full_name && (
                         <div className="text-red-500 text-sm">
-                          {errors.fullName}
+                          {errors.full_name}
                         </div>
                       )}
                     </div>

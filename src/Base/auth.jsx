@@ -1,7 +1,7 @@
 import Apikit from "./Apikit";
 
 export const SignupAction = (data) => {
-    return Apikit.post ("/api/sign-up/", data);
+    return Apikit.post ("/api/sign-up", data);
 };
 
 export const LoginAction = (data) =>{
@@ -12,9 +12,6 @@ export const LoginOutAction = (data) =>{
     return Apikit.post("/logout", data);
 };
 
-export const FolderAction = (data) =>{
-    return Apikit.post("/folder", data);
-};
 
 
 

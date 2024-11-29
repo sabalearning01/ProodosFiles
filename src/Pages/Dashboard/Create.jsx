@@ -24,25 +24,6 @@ const Create = () => {
   const [folderName, setFolderName] = useState("");
   const [message, setMessage] = useState("");
 
-  // const handleCreateFolder = async () => {
-  //   if (!folderName.trim()) {
-  //     setMessage("Folder name cannot be empty.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(
-  //       "https://proodoosfiles.onrender.com/api/create-f/",
-  //       {
-  //         folderName,
-  //       }
-  //     );
-  //     setMessage(response.data);
-  //   } catch (error) {
-  //     setMessage(error.response?.data || "Error creating folder.");
-  //   }
-  // };
-
   const handleCreateFolder = async () => {
     if (!folderName.trim()) {
       toast.error("Folder name cannot be empty.");

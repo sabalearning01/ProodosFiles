@@ -5,8 +5,11 @@ import axios from "axios";
 import * as Yup from "yup";
 import { SignupAction } from "../../Base/auth";
 import { LoginAction } from "../../Base/auth";
+import { useNavigate } from "react-router-dom";
 
 // import Eye from "../../assets/Eye.png"
+
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +28,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   // Toggle password visibility
   const togglePasswordVisibility = () => {
@@ -78,51 +83,7 @@ const Login = () => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     setLoading(true); // Start loading
-  //     // Validate entire form data using Yup schema
-  //     await validationSchema.validate(formData, { abortEarly: false });
-  //     setErrors({}); // Clear any previous errors if validation is successful
-
-  //     // Determine endpoint based on login/signup
-  //     const endpoint = isLogin
-  //     ? LoginAction(values)
-  //     : SignupAction(values)
-
-  //     // Make API request
-  //     const response = await axios.post(endpoint, formData);
-
-  //     // Handle successful response
-  //     if (response.status >= 200 && response.status < 300) {
-  //       toast.success(isLogin ? 'Login successful' : 'Signup successful');
-  //     } else {
-  //       toast.error('Unexpected response. Please try again.');
-  //     }
-  //   } catch (err) {
-  //     if (err.name === 'ValidationError') {
-  //       // Handle validation errors
-  //       const validationErrors = {};
-  //       err.inner.forEach((error) => {
-  //         validationErrors[error.path || 'unknown'] = error.message;
-  //       });
-  //       setErrors(validationErrors);
-  //     } else if (err.response) {
-  //       // Handle API errors
-  //       console.error('API Error:', err.response.data);
-  //       toast.error(err.response.data.message || 'Something went wrong!');
-  //     } else {
-  //       // Handle unexpected errors
-  //       console.error('Unexpected Error:', err);
-  //       toast.error('An unexpected error occurred. Please try again.');
-  //     }
-  //   } finally {
-  //     setLoading(false); // Stop loading
-  //   }
-  // }
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -140,6 +101,7 @@ const Login = () => {
         console.log(SignupAction);
         console.log(LoginAction);
 
+        navigate ("/dashboard")
       
       if (response.status >= 200 && response.status < 300) {
         toast.success(isLogin ? "Login successful" : "Signup successful");
@@ -166,6 +128,10 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleRedirectToDashboard = () => {
+    navigate("/dashboard"); // Programmatically navigate to the sign-up route
   };
 
   console.log(formData);

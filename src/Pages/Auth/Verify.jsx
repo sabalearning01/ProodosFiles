@@ -81,7 +81,7 @@ const Verify = () => {
           ProodosFiles
         </p>
         <h6 className="text-center text-[24px] pb-[148px] font-semibold lg:text-[32px] lg:font-extrabold">
-          Forget Password
+          Verify Account
         </h6>
         <div className="lg:flex lg:justify-between lg:items-center">
           <div className="lg:w-1/2">

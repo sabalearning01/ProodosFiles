@@ -134,16 +134,31 @@
 // };
 
 // export default Folders;
-
+import Apikit from '../../Base/Apikit';
 import React, { useState, useEffect } from "react";
 import folderIcon from "../../assets/folder.png";
 import userIcon from "../../assets/user.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { GetFolderAction } from "../../Base/data"; 
+import { GetFolderAction } from "../../Base/data";
+import menuvector from "../../assets/menuvector.png";
+import Home from "../../assets/Home.png";
+import { Link } from "react-router-dom";
+import FTP from "../../assets/FTP.png";
+import Rating from "../../assets/Rating.png";
+import Disposal from "../../assets/Disposal.png";
+import AddFolder from "../../assets/AddFolder.png";
+import LogoutRounded from "../../assets/LogoutRounded.png";
+import close from "../../assets/close.png";
 
 const Folders = () => {
   const [folders, setFolders] = useState([]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Fetch folders from API
   const fetchFolders = async () => {
@@ -207,10 +222,22 @@ const Folders = () => {
   return (
     <div>
       <ToastContainer />
-      <div className="w-[80%] h-[586px] md:w-[50%] md:ml-[300px] md:h-[350px] lg:w-[72%] lg:h-[422px] border-[#EAEAEA] border lg:ml-[300px] ml-[44px]">
+
+      <div className="flex justify-between items-center mt-[29px] lg:hidden">
+        <p className="font-[Poppins] text-[#773DD3] text-base font-extrabold ml-[22px]">
+          Prodoos<span className="font-light">Files</span>
+        </p>
+        <img
+          className="mr-[22px] lg:hidden"
+          src={menuvector}
+          alt="hamburgermenuicon"
+          onClick={toggleMenu}
+        />
+      </div>
+      <div className=" mt-[30px] w-[80%] h-[586px] md:w-[50%] md:ml-[300px] md:h-[350px] lg:w-[72%] lg:h-[422px] border-[#EAEAEA] border lg:ml-[300px] ml-[44px]">
         {/* Header Section */}
-        <div className="grid grid-cols-6 gap-[16px] px-[18px] mt-[24px]">
-          <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
+        <div className="grid grid-cols-5 gap-[16px] px-[18px] mt-[24px]">
+          <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal  text-left">
             Name
           </h3>
           <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
@@ -222,9 +249,9 @@ const Folders = () => {
           <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
             Size
           </h3>
-          <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
+          {/* <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
             Share
-          </h3>
+          </h3> */}
           <h3 className="font-[Poppins] text-[#7E838B] text-[10px] font-normal text-left">
             Delete
           </h3>
@@ -293,6 +320,103 @@ const Folders = () => {
           </p>
         )}
       </div>
+      {isMenuOpen ? (
+        <div>
+          <div
+            className="bg-[#344054B2] opacity-70 w-[100%] h-full fixed top-0 left-0 lg:hidden"
+            onClick={toggleMenu}
+          ></div>
+          <div className="bg-[#fff] w-[272px] h-[100%] fixed left-0 top-0 z-50 lg:hidden">
+            <div className="flex justify-between items-center ">
+              <p className=" mt-[22px] font-[Poppins] text-[#773DD3] text-base font-extrabold ml-[22px]">
+                Prodoos<span className="font-light">Files</span>
+              </p>
+              <img
+                className="mt-[28px] mr-[20px]"
+                src={close}
+                alt=""
+                onClick={toggleMenu}
+              />
+            </div>
+
+            <div className="flex ml-[16px] mt-[27px] hover:bg-[#E3E0E833] transition-colors duration-200 ">
+              <img
+                className="object-contain cursor-pointer"
+                src={Home}
+                alt=""
+              />
+              <h3 className="text-[#242424] cursor-pointer font-[Poppins] text-sm font-normal">
+                Dashboard
+              </h3>
+            </div>
+
+            <Link to="/Folders">
+              <div className="flex ml-[16px] mt-[25px]">
+                <img
+                  className="object-contain cursor-pointer"
+                  src={FTP}
+                  alt=""
+                />
+                <h3 className="text-[#242424]  cursor-pointer font-[Poppins] text-sm font-normal">
+                  Folders
+                </h3>
+              </div>
+            </Link>
+
+            <Link to="/Starred">
+              <div className="flex ml-[16px] mt-[25px]">
+                <img
+                  className="object-contain cursor-pointer"
+                  src={Rating}
+                  alt=""
+                />
+                <h3 className="text-[#242424] cursor-pointer font-[Poppins] text-sm font-normal">
+                  Starred
+                </h3>
+              </div>
+            </Link>
+
+            <Link to="/RecycleBin">
+              <div className="flex ml-[16px] mt-[25px]">
+                <img
+                  className="object-contain cursor-pointer"
+                  src={Disposal}
+                  alt=""
+                />
+                <h3 className="text-[#242424] cursor-pointer font-[Poppins] text-sm font-normal">
+                  Recycle Bin
+                </h3>
+              </div>
+            </Link>
+
+            <Link to="/Create">
+              <div className="flex ml-[16px] mt-[25px]">
+                <img
+                  className="object-contain cursor-pointer"
+                  src={AddFolder}
+                  alt=""
+                />
+                <h3 className="text-[#242424]  cursor-pointer font-[Poppins] text-sm font-normal">
+                  Create
+                </h3>
+              </div>
+            </Link>
+
+            <Link to="/Logout">
+              <div className="flex ml-[16px] mt-[25px]">
+                <img
+                  className="object-contain cursor-pointer"
+                  src={LogoutRounded}
+                  alt=""
+                />
+                <h3 className="text-[#242424] font-[Poppins] text-sm font-normal cursor-pointer">
+                  Logout
+                </h3>
+              </div>
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

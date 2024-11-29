@@ -5,11 +5,15 @@ export const CreateProfileAction = (data, sessionToken) => {
 };
 
 export const GetFolderAction = (data) => {
-  return Apikit.get("/get-folders", data);
+  return Apikit.get("/all-folders", data);
 };
 
 export const Create = (data) => {
   return Apikit.post ("/create-f", data);
+};
+
+export const Starred = (data) => {
+  return Apikit.post ("/starred-f", data);
 };
 
 

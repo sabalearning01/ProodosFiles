@@ -9,6 +9,10 @@ export const LoginAction = (data) =>{
     return Apikit.post("/login", data);
 };
 
+export const ForgotPasswordAction = (data)=>{
+     return Apikit.post("/forgot-pass", data);
+}
+
 export const LoginOutAction = (data) =>{
     return Apikit.post("/logout", data);
 };

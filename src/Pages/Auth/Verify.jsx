@@ -57,7 +57,7 @@ const Verify = () => {
           theme: "colored",
         });
       } catch (error) {
-        toast.error(error.response?.data?.message || "Failed to verify account.", {
+        toast.error(error.response?.data?.message || "Failed to verify account. Please sign up first", {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,

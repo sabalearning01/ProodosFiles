@@ -91,6 +91,12 @@ import Clouds from "../../assets/Clouds.png";
         setErrors({});
         const action = isLogin ? LoginAction : SignupAction;
         const response = await action(formData);
+
+        // Assuming the response contains the token
+        const token = response.data.token;
+
+        // Store the token in localStorage
+        localStorage.setItem("authToken", token);
   
         localStorage.setItem("hasSignedUp", "true");
   

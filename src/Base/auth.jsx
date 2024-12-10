@@ -21,7 +21,7 @@ export const LoginOutAction = (data) =>{
 export const ResetAction = (data, token)=>{
     return Apikit.post("/reset-password", data,{
      headers:{
-        authorization: `Bearer ${token}`,
+        authorization: `Token ${token}`,
      },
     });
 };
@@ -29,7 +29,7 @@ export const ResetAction = (data, token)=>{
 export const ResetPassword =(data,token)=> {
     return Apikit.put("rest/pswd", data,{
         headers:{
-            authorization:`Bearer ${token}`,
+            authorization:`Token ${token}`,
         },
     });
 };
